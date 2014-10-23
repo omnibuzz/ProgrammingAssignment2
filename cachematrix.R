@@ -9,7 +9,7 @@ makeCacheMatrix <- function(x = matrix()) {
 	inverse <- NULL
 	
 	set <- function(y) {
-		x <<- y				#assigning to the original variable in the parent frame
+		x <<- y			#assigning to the original variable in the parent frame
 		inverse <<- NULL	#reset the inverse as original matrix has changed
 	}
 	
@@ -33,17 +33,17 @@ makeCacheMatrix <- function(x = matrix()) {
 ## and if it does, it is returned, else it is computed and returned
 
 cacheSolve <- function(x, ...) {
-inverse <- x$getinverse() # try to get the inverse from the cache
+	inverse <- x$getinverse() # try to get the inverse from the cache
 	
 	if(!is.null(inverse)){
 		message("getting cache data")
-		return(inverse) 	  # return inverse from cache and exit function
+		return(inverse)	# return inverse from cache and exit function
 	}
 	
 	# This section of the code is reached only if inverse was not found in the cache
 	data <- x$get()
 	
-	inverse <- solve(data,...) # compute the inverse	
-	x$setinverse(inverse)	   # add it to cache so that it doesn't have to be computed again
-	inverse 				   # return the inverse of the matrix
+	inverse <- solve(data,...) 	# compute the inverse	
+	x$setinverse(inverse)		# add it to cache so that it doesn't have to be computed again
+	inverse 			# return the inverse of the matrix
 }
