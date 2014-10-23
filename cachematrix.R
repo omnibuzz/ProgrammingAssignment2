@@ -33,11 +33,11 @@ makeCacheMatrix <- function(x = matrix()) {
 ## and if it does, it is returned, else it is computed and returned
 
 cacheSolve <- function(x, ...) {
-	inverse <- x$getinverse() # try to get the inverse from the cache
+	inverse <- x$getinverse() 	# try to get the inverse from the cache
 	
 	if(!is.null(inverse)){
 		message("getting cache data")
-		return(inverse)	# return inverse from cache and exit function
+		return(inverse)		# return inverse from cache and exit function
 	}
 	
 	# This section of the code is reached only if inverse was not found in the cache
